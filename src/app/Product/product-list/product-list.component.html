@@ -1,0 +1,7 @@
+<div id="products" class="container-fluid">
+  <div class="row">
+    <div class="col-4 overflow-auto" style="max-height: 500px;" *ngFor="let product of products">
+      <app-product-card [product]="product"></app-product-card>
+    </div>
+  </div>
+</div>

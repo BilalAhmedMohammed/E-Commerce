@@ -1,0 +1,10 @@
+<mat-card class="example-card">
+    <mat-card-title-group>
+      <mat-card-title class="text-secondary text-center fw-bold">{{productDetails?.category}}</mat-card-title>
+      <mat-card-subtitle class="text-primary text-center">{{productDetails?.title}}</mat-card-subtitle>
+      <img mat-card-lg-image src="{{productDetails?.image}}" >
+    </mat-card-title-group>
+    <mat-card-content>
+      {{productDetails?.description}}
+    </mat-card-content>
+  </mat-card>

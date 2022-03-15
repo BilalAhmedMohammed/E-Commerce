@@ -1,0 +1,30 @@
+<div class="container-fluid p-5">
+
+  <h2 *ngIf="counter;then full;else empty">
+  </h2>
+  <ng-template #full>
+    <table class="table table-dark table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Image</th>
+          <th scope="col">Name</th>
+          <th scope="col">Price</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tr *ngFor="let product of productList">
+        <td class="text-dark"><img [src]="product.image" style="width: 150px;height: 150px;" class="img-fluid" alt=""></td>
+        <td class="text-dark">{{product.title}}</td>
+        <td class="text-dark">{{product.price | currency:'EGP'}}</td>
+        <td class="text-dark text-white"><input type="button" class="text-white" (click)="increase(quantity,product.id)" value="+"><input class="mx-4 text-white" style="width: 40px;" type="text" value="1" #quantity disabled><input (click)="decrease(quantity,product.id)" type="button" value="-" class=" text-white"></td>
+        <td class="text-dark"><button class="btn btn-dark text-white" (click)="removeThisElement(product) ">remove</button></td>
+      </tr>
+    </table>
+    <h1 class="text-center">Total : {{total|currency:"EGP"}}</h1>
+  </ng-template>
+  <ng-template #empty>
+    <h1 class="text-danger">Your Cart is Empty</h1>
+  </ng-template>
+  
+</div>

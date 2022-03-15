@@ -1,0 +1,44 @@
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <h1 class="text-center text-primary fw-bold mt-5 col-12">Login</h1>
+        <form #loginForm="ngForm" (ngSubmit)="submitloginForm(loginForm)" class="m-5 col-5 d-flex flex-column">
+            <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label fw-bold fs-5">Email address</label>
+                <input type="email" class="form-control" id="exampleInputEmail1" 
+                required
+                ngModel
+                name="emailAddress"
+                #emailAddress="ngModel"
+                pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"
+                />
+                <div class="text-danger" *ngIf="emailAddress.touched && !emailAddress.valid">
+                    <small  *ngIf="emailAddress.errors?.['required']">
+                      this field is required
+                    </small>
+                    <small  *ngIf="emailAddress.errors?.['pattern']">
+                        this format is not match email format
+                      </small>
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label fw-bold fs-5">Password</label>
+                <input type="password" class="form-control" id="exampleInputPassword1"
+                required
+                ngModel
+                minlength="8"
+                name="pass"
+                #pass="ngModel"/>
+                <div class="text-danger" *ngIf="pass.touched && !pass.valid">
+                    <small *ngIf="pass.hasError('required')">
+                      this field is required
+                    </small>
+                    <small *ngIf="pass.hasError('minlength')">
+                      this field is must be 8 or more characters
+                    </small>
+                  </div>
+            </div>
+            <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary fw-bold fs-3">Login</button>
+            <p class="fw-bold fs-5 text-center pt-5">Don't have account /? <a class="text-dark "> Register</a></p>
+        </form>
+    </div>
+</div>
